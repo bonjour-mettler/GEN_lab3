@@ -1,5 +1,7 @@
 public class Piece {
     private String name;
+    private Square location;
+    private Player owner;
 
     Piece(String name){
         this.name = name;
