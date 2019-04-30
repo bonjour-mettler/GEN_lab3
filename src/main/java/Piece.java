@@ -1,17 +1,21 @@
 public class Piece {
     private String name;
     private Square location;
-    private Player owner;
 
-    Piece(String name){
+    Piece(String name, Square location){
         this.name = name;
+        this.location = location;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Square getLocation() {
+        return location;
+    }
+
+    public void setLocation(Square location) {
+        this.location = location;
     }
 }

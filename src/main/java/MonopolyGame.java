@@ -1,20 +1,28 @@
 import java.util.ArrayList;
 
 public class MonopolyGame {
-    private ArrayList<Die> dies;
+    private ArrayList<Die> dice;
     private Board onBoard;
     private ArrayList<Player> players;
     private int roundCnt;
 
-    MonopolyGame(Board playedOn, ArrayList<Die> dies, ArrayList<Player> players){
-        this.dies = new ArrayList<Die>();
+    public MonopolyGame(ArrayList<Player> players){
+
+        this.dice = new ArrayList<Die>();
+        dice.add(new Die());
+        dice.add(new Die());
+
         this.players = new ArrayList<Player>();
 
-        this.dies.addAll(dies);
-        //TODO: contrôler qu'il y a 2 players
-        this.players.addAll(players);
+        this.onBoard = new Board();
 
-        this.onBoard = playedOn;
+        // TODO: contrôler qu'il y a 2 players
+        this.players.addAll(players);
+        for(Player currentPlayer : this.players) {
+            currentPlayer.setDice(this.dice);
+            currentPlayer.setPiece(new Piece("Piece of " + currentPlayer.getName(), this.onBoard.getGo()));
+            currentPlayer.setBoard(this.onBoard);
+        }
         this.roundCnt = 0;
     }
 
@@ -25,8 +33,9 @@ public class MonopolyGame {
         }
     }
 
-    private void playRound(){
-        for(Player currentPlayer : this.players){
+    private void playRound() {
+        System.out.println("Round : " + this.roundCnt);
+        for (Player currentPlayer : this.players) {
             currentPlayer.takeTurn();
         }
     }
@@ -34,16 +43,10 @@ public class MonopolyGame {
     public static void main(String[] args) {
         // We add players to the game
         ArrayList<Player> players = new ArrayList<Player>();
-        players.add(new Player("Mickael"));
-        players.add(new Player("Samuel"));
+        players.add(new Player("The amazing Mickael"));
+        players.add(new Player("The wicked Sam"));
 
-        ArrayList<Die> dies = new ArrayList<Die>();
-        dies.add(new Die());
-        dies.add(new Die());
-
-        Board theBoard = new Board();
-
-        MonopolyGame theGame = new MonopolyGame(theBoard,dies,players);
+        MonopolyGame theGame = new MonopolyGame(players);
 
         // Start the game
         theGame.playGame(20);
