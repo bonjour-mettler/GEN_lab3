@@ -7,13 +7,13 @@ public class MonopolyGame {
     private int roundCnt;
 
     MonopolyGame(Board playedOn, ArrayList<Die> dies, ArrayList<Player> players){
-        if (this.dies != null) {
-            this.dies.addAll(dies);
-        }
-        if (this.players != null) {
-            //TODO: contrôler qu'il y a 2 players
-            this.players.addAll(players);
-        }
+        this.dies = new ArrayList<Die>();
+        this.players = new ArrayList<Player>();
+
+        this.dies.addAll(dies);
+        //TODO: contrôler qu'il y a 2 players
+        this.players.addAll(players);
+
         this.onBoard = playedOn;
         this.roundCnt = 0;
     }
@@ -21,6 +21,7 @@ public class MonopolyGame {
     public void playGame(int N){
         while(this.roundCnt < N) {
             this.playRound();
+            roundCnt++;
         }
     }
 

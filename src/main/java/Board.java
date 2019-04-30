@@ -4,6 +4,7 @@ public class Board {
     private ArrayList<Square> squares;
 
     public Board(){
+        squares = new ArrayList<Square>();
         // We add the first Square
         squares.add(new Square("Go"));
         // We then add the others squares
