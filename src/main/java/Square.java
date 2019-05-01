@@ -1,14 +1,21 @@
 public class Square {
     private String name;
     private Board board;
-    private Piece[] piecesOnSquare;
 
 
+    /**
+     * Constructor of Square
+     * @param name : Name of the square
+     */
     public Square(String name){
         this.name = name;
-        piecesOnSquare = new Piece[8];
+
     }
 
+    /**
+     * Get the name of the square
+     * @return its name
+     */
     public String getName() {
         return name;
     }
