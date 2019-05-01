@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class Player {
@@ -5,6 +6,7 @@ public class Player {
     private Piece owns;
     private ArrayList<Die> dice;
     private Board board;
+    private int cash;
 
     /**
      * Constructor of player
@@ -12,6 +14,7 @@ public class Player {
      */
     Player(String name) {
         this.name = name;
+        this.cash = 1500;
     }
 
     /**
@@ -73,5 +76,25 @@ public class Player {
      */
     public void setBoard(Board board) {
         this.board = board;
+    }
+
+    public void addCash(int amount){
+        this.cash += amount;
+    }
+
+    public void payTax() {
+        int amountToPay;
+        if (this.cash > 200) {
+
+            if (this.cash < 2000) {
+                amountToPay = 200;
+            } else
+                amountToPay = this.cash / 10;
+        } else {
+            System.out.println(this.name + " landed on tax with only " + this.cash + "$ !");
+            System.out.println(this.name + " is poor and has no money left !");
+            amountToPay = this.cash;
+        }
+        this.cash -= amountToPay;
     }
 }
