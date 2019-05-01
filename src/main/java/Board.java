@@ -34,7 +34,7 @@ public class Board {
      * @param guess Square to guess pos
      * @return the id of the square
      */
-    private int getIndex(Square guess){
+    public int getIndex(Square guess){
         int index;
         for(index = 0; index < 40; ++index){
             if(squares.get(index) == guess){
