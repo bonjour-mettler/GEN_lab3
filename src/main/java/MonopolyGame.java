@@ -56,10 +56,12 @@ public class MonopolyGame {
         }
     }
 
+
     /**
      * Application launch to play a game
      * @param args
      */
+
     public static void main(String[] args) {
         // We add players to the game
         ArrayList<Player> players = new ArrayList<Player>();

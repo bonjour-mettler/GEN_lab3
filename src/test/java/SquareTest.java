@@ -8,4 +8,5 @@ class SquareTest {
         Square test = new Square("Jail");
         assertEquals("Jail", test.getName());
     }
+
 }

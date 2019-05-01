@@ -1,10 +1,16 @@
 import org.junit.jupiter.api.Test;
 
+
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class BoardTest {
+    @Test
+    public void aBoardShouldNeverBeEmpty() {
+        Board board = new Board();
+        assertNotNull(board);
+    }
     @Test
     void aBoardShouldCreateCorrectSquares(){
         Board board = new Board();
@@ -46,5 +52,6 @@ class BoardTest {
             assertEquals(i, result);
             ++i;
         }
+
     }
 }
