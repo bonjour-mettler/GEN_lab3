@@ -1,18 +1,36 @@
 import java.util.ArrayList;
 
 public class Board {
-    private ArrayList SquareList;
+
+    private ArrayList<Square> squares;
 
     public Board(){
-        SquareList = new ArrayList<Square>();
-        SquareList.add(new Square("Go"));
-        for (int i = 1; i < 40; ++i){
-            SquareList.add(new Square("Square"+i));
+        squares = new ArrayList<Square>();
+        // We add the first Square
+        squares.add(new Square("Go"));
+        // We then add the others squares
+        for(int i = 1; i < 40; ++i){
+            String name = "Square " + Integer.toString(i);
+            squares.add(new Square(name));
         }
-
     }
 
-    public Square getSquare(Square oldLoc, int offset){
-        return (Square) SquareList.get((SquareList.indexOf(oldLoc) + offset) % 40);
+    public Square getGo(){
+        return squares.get(0);
+    }
+
+    private int getIndex(Square guess){
+        int index;
+        for(index = 0; index < 40; ++index){
+            if(squares.get(index) == guess){
+                break;
+            }
+        }
+        return index;
+    }
+
+    public Square getSquare(Square begin, int offset){
+        int index = this.getIndex(begin);
+        return squares.get((index + offset) % 40);
     }
 }
