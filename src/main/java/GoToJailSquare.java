@@ -6,11 +6,11 @@ public class GoToJailSquare extends Square {
 
 
     /**
-     * Ajout d'argent quand le player tombe dessus
+     * On envoie le joueur en prison quand il tombe dessus
      * @param player
      */
     @Override
     public void landedOn(Player player) {
-      //  player.getOwns().setLocation();
+        player.getOwns().setLocation(player.getBoard().getPrison());
     }
 }

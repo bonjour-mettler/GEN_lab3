@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Board {
-
+    private final int NBSQUARE = 40;
     private ArrayList<Square> squares;
 
     /**
@@ -12,7 +12,7 @@ public class Board {
         // We add the first Square which is the Go
         squares.add(new GoSquare("Go"));
         // We then add the others squares (39 remaining)
-        for(int i = 1; i < 40; ++i){
+        for(int i = 1; i < NBSQUARE; ++i){
             if(i == 10){
                 squares.add(new RegularSquare("Jail"));
             } else if(i == 20){
@@ -50,7 +50,7 @@ public class Board {
      */
     public int getIndex(Square guess){
         int index;
-        for(index = 0; index < 40; ++index){
+        for(index = 0; index < NBSQUARE; ++index){
             if(squares.get(index) == guess){
                 break;
             }
@@ -66,6 +66,6 @@ public class Board {
      */
     public Square getSquare(Square begin, int offset){
         int index = this.getIndex(begin);
-        return squares.get((index + offset) % 40);
+        return squares.get((index + offset) % NBSQUARE);
     }
 }

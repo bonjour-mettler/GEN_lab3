@@ -6,7 +6,7 @@ public class RegularSquare extends Square {
 
 
     /**
-     * Ajout d'argent quand le player tombe dessus
+     * On ne fait rien quand le player tombe dessus
      * @param player
      */
     @Override
