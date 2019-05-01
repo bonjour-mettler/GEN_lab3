@@ -7,10 +7,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BoardTest {
     @Test
-    public void aBoardShouldNeverBeEmpty(){
+    public void aBoardShouldNeverBeEmpty() {
         Board board = new Board();
         assertNotNull(board);
-
+    }
+    @Test
     void aBoardShouldCreateCorrectSquares(){
         Board board = new Board();
         // We test 2 times the board
