@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Board {
-
+    private final int NBSQUARE = 40;
     private ArrayList<Square> squares;
 
     /**
@@ -9,12 +9,19 @@ public class Board {
      */
     public Board(){
         squares = new ArrayList<Square>();
-        // We add the first Square wich is the Go
-        squares.add(new Square("Go"));
+        // We add the first Square which is the Go
+        squares.add(new GoSquare("Go"));
         // We then add the others squares (39 remaining)
-        for(int i = 1; i < 40; ++i){
-            String name = "Square " + Integer.toString(i);
-            squares.add(new Square(name));
+        for(int i = 1; i < NBSQUARE; ++i){
+            if(i == 10){
+                squares.add(new RegularSquare("Jail"));
+            } else if(i == 20){
+                squares.add(new IncomeTaxSquare("IncomeTax"));
+            } else if(i == 30){
+                squares.add(new GoToJailSquare("GoToJail"));
+            } else {
+                squares.add(new RegularSquare("Square " + Integer.toString(i)));
+            }
         }
     }
 
@@ -34,6 +41,8 @@ public class Board {
         return squares.get(0);
     }
 
+    public Square getPrison(){ return squares.get(10);}
+
     /**
      * Get the index of the Square in the squares ArrayList
      * @param guess Square to guess pos
@@ -41,7 +50,7 @@ public class Board {
      */
     public int getIndex(Square guess){
         int index;
-        for(index = 0; index < 40; ++index){
+        for(index = 0; index < NBSQUARE; ++index){
             if(squares.get(index) == guess){
                 break;
             }
@@ -57,6 +66,6 @@ public class Board {
      */
     public Square getSquare(Square begin, int offset){
         int index = this.getIndex(begin);
-        return squares.get((index + offset) % 40);
+        return squares.get((index + offset) % NBSQUARE);
     }
 }

@@ -1,7 +1,5 @@
-public class Square {
+abstract class Square {
     private String name;
-    private Board board;
-
 
     /**
      * Constructor of Square
@@ -20,4 +18,5 @@ public class Square {
         return name;
     }
 
+    public abstract void landedOn(Player player);
 }

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class MonopolyGame {
-    private ArrayList<Die> dice;
+    private Cup cup;
     private Board onBoard;
     private ArrayList<Player> players;
     private int roundCnt;
@@ -13,9 +13,7 @@ public class MonopolyGame {
     public MonopolyGame(ArrayList<Player> players){
 
         // We create 2 die for the Game
-        this.dice = new ArrayList<Die>();
-        dice.add(new Die());
-        dice.add(new Die());
+        this.cup = new Cup(2);
 
         // We create the container for our players
         this.players = new ArrayList<Player>();
@@ -25,11 +23,12 @@ public class MonopolyGame {
         // TODO: contrôler qu'il y a 2 players
         // We add the players given
         this.players.addAll(players);
-        // For each player we create a Piece and put it on the Go Square, we pass the board and the dice too for functional purposes
+        // For each player we create a Piece and put it on the Go Square, we pass the board and the cup too for functional purposes
         for(Player currentPlayer : this.players) {
-            currentPlayer.setDice(this.dice);
+            currentPlayer.setCup(this.cup);
             currentPlayer.setPiece(new Piece("Piece of " + currentPlayer.getName(), this.onBoard.getGo()));
             currentPlayer.setBoard(this.onBoard);
+
         }
         // We set the current round to 0
         this.roundCnt = 0;
@@ -50,18 +49,16 @@ public class MonopolyGame {
      * Play a round
      */
     private void playRound() {
-        System.out.println("Round : " + this.roundCnt);
+        System.out.println("\n\tRound : " + this.roundCnt);
         for (Player currentPlayer : this.players) {
             currentPlayer.takeTurn();
         }
     }
 
-
     /**
      * Application launch to play a game
      * @param args
      */
-
     public static void main(String[] args) {
         // We add players to the game
         ArrayList<Player> players = new ArrayList<Player>();

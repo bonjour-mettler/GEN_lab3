@@ -18,8 +18,12 @@ class BoardTest {
         for(int i = 0; i < 80; ++i) {
             if(i %40 == 0){
                 assertEquals("Go", board.getGo().getName());
-            } else {
-                assertEquals("Square " + (i % 40), board.getSquare(board.getGo(), i).getName());
+            } else if (i == 10){
+                assertEquals("Jail", board.getSquare(board.getGo(), i).getName());
+            } else if (i == 20){
+                assertEquals("IncomeTax", board.getSquare(board.getGo(), i).getName());
+            } else if (i == 30){
+                assertEquals("GoToJail",  board.getSquare(board.getGo(), i).getName());
             }
         }
     }

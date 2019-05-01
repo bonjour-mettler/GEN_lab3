@@ -11,7 +11,7 @@ class PieceTest {
 
     @Test
     void aPieceShouldRetrieveAGoodLocationAndName(){
-        Square sq = new Square("Square Test");
+        RegularSquare sq = new RegularSquare("Square Test");
         Piece test = new Piece("test", sq);
         assertEquals("test", test.getName());
         assertEquals("Square Test", test.getLocation().getName());
