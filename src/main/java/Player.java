@@ -36,8 +36,13 @@ public class Player {
         this.dice = dice;
     }
 
+
     public void setPiece(Piece owns) {
         this.owns = owns;
+    }
+
+    public Piece getOwns(){
+        return this.owns;
     }
 
     public void setBoard(Board board) {
