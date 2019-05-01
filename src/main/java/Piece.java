@@ -22,7 +22,7 @@ public class Piece {
 
     /**
      * Function to retrieve location Square
-     * @return
+     * @return current square
      */
     public Square getLocation() {
         return location;

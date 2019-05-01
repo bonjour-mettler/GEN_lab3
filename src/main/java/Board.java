@@ -18,13 +18,17 @@ public class Board {
         }
     }
 
+    /**
+     * Method to give the Squares of the board
+     * @return the squares of the board
+     */
     public ArrayList<Square> getSquares(){
         return squares;
     }
 
     /**
      * Method to give the Go Square, necessary when creating Pieces
-     * @return
+     * @return the square Go
      */
     public Square getGo(){
         return squares.get(0);
