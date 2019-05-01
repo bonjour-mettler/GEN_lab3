@@ -17,6 +17,10 @@ public class Board {
         }
     }
 
+    public ArrayList<Square> getSquares(){
+        return squares;
+    }
+
     /**
      * Method to give the Go Square, necessary when creating Pieces
      * @return
