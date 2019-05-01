@@ -9,12 +9,19 @@ public class Board {
      */
     public Board(){
         squares = new ArrayList<Square>();
-        // We add the first Square wich is the Go
-        squares.add(new Square("Go"));
+        // We add the first Square which is the Go
+        squares.add(new GoSquare("Go"));
         // We then add the others squares (39 remaining)
         for(int i = 1; i < 40; ++i){
-            String name = "Square " + Integer.toString(i);
-            squares.add(new Square(name));
+            if(i == 10){
+                squares.add(new RegularSquare("Jail"));
+            } else if(i == 20){
+                squares.add(new IncomeTaxSquare("IncomeTax"));
+            } else if(i == 30){
+                squares.add(new GoToJailSquare("GoToJail"));
+            } else {
+                squares.add(new RegularSquare("Square " + Integer.toString(i)));
+            }
         }
     }
 
@@ -33,6 +40,8 @@ public class Board {
     public Square getGo(){
         return squares.get(0);
     }
+
+    public Square getPrison(){ return squares.get(10);}
 
     /**
      * Get the index of the Square in the squares ArrayList

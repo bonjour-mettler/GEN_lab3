@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SquareTest {
     @Test
     public void aSquareShouldReturnCorrectName(){
-        Square test = new Square("Jail");
+        RegularSquare test = new RegularSquare("Jail");
         assertEquals("Jail", test.getName());
     }
 
