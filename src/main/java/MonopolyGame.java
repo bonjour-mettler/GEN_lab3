@@ -60,7 +60,6 @@ public class MonopolyGame {
      * @param N number of rounds to play
      */
     public void playGame(int N){
-        //  on N
         while(this.roundCnt < N) {
             this.playRound();
             roundCnt++;
