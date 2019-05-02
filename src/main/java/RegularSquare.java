@@ -1,5 +1,9 @@
 public class RegularSquare extends Square {
 
+    /**
+     * Constructor of regularSquare with its name
+     * @param name
+     */
     public RegularSquare(String name){
         super(name);
     }
