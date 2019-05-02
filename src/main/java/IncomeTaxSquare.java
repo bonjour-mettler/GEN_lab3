@@ -14,7 +14,7 @@ public class IncomeTaxSquare extends Square {
 
 
     /**
-     * When landed on the player will lose money because of tax
+     * When landed on the player will lose money because of taxes
      * @param player player landing on
      */
     @Override
