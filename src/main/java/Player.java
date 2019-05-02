@@ -1,10 +1,7 @@
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-
 public class Player {
     private String name;
     private Piece owns;
-    private ArrayList<Die> dice;
+    private Cup cup;
     private Board board;
     private int cash;
 
@@ -26,32 +23,36 @@ public class Player {
     }
 
     /**
-     * Emulate the turn of a player. Rolling the dice and changing square accordingly
+     * Emulate the turn of a player. Rolling the cup and changing square accordingly
      */
     public void takeTurn() {
-        int totFV = 0;
-        for (Die die : this.dice) {
-            die.roll();
-            totFV += die.getFaceValue();
-        }
+        this.cup.roll();
+        int totFV = this.cup.getTotal();
+
         if(totFV > 10){
-            System.out.println(this.name + " rolled a magnificient " + totFV + " !");
+            System.out.println('\n' + this.name + " rolled a magnificient " + totFV + " !");
         }
-        else
-            System.out.println(this.name + " rolled " + totFV + " !");
+        else System.out.println('\n' + this.name + " rolled " + totFV + " !");
 
         Square oldLoc = this.owns.getLocation();
         Square newLoc = this.board.getSquare(oldLoc, totFV);
         this.owns.setLocation(newLoc);
+        this.owns.getLocation().landedOn(this);
+
         System.out.println("Moved from " + oldLoc.getName() + " to " + newLoc.getName());
+        if(newLoc != this.owns.getLocation()){
+            System.out.println("Stop right there, you criminal scum !");
+            System.out.println("Moved from " + newLoc.getName() + " to " + this.owns.getLocation().getName());
+        }
+
     }
 
     /**
-     * Give the player some dice to play with
-     * @param dice : list of dice
+     * Give the player some cup to play with
+     * @param cup : list of cup
      */
-    public void setDice(ArrayList<Die> dice) {
-        this.dice = dice;
+    public void setCup(Cup cup) {
+        this.cup = cup;
     }
 
     /**
@@ -78,23 +79,35 @@ public class Player {
         this.board = board;
     }
 
+    /**
+     * Function to increment current Cash with givn param
+     * @param amount amount to add
+     */
     public void addCash(int amount){
         this.cash += amount;
     }
 
-    public void payTax() {
-        int amountToPay;
-        if (this.cash > 200) {
-
-            if (this.cash < 2000) {
-                amountToPay = 200;
-            } else
-                amountToPay = this.cash / 10;
-        } else {
-            System.out.println(this.name + " landed on tax with only " + this.cash + "$ !");
-            System.out.println(this.name + " is poor and has no money left !");
-            amountToPay = this.cash;
-        }
+    /**
+     * Function to decrement the current cash with given param
+     * @param amountToPay amount to substract to current cash
+     */
+    public void reduceCash(int amountToPay) {
         this.cash -= amountToPay;
+    }
+
+    /**
+     * Getter for the board
+     * @return the board of the player
+     */
+    public Board getBoard(){
+        return this.board;
+    }
+
+    /**
+     * Get the current cash of this player
+     * @return amount in the bank
+     */
+    public int getNetWorth() {
+        return this.cash;
     }
 }
