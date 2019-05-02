@@ -5,7 +5,7 @@ public class GoSquare extends Square {
     }
 
     /**
-     * Ajout d'argent quand le player tombe dessus
+     * Add cash to the player when landed on
      * @param player
      */
     @Override
