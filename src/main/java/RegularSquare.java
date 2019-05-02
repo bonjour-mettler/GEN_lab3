@@ -1,12 +1,16 @@
 public class RegularSquare extends Square {
 
+    /**
+     * Constructor of regularSquare with its name
+     * @param name
+     */
     public RegularSquare(String name){
         super(name);
     }
 
 
     /**
-     * We're doing nothing when te player landed on it
+     * Nothing happens to the player when landed on
      * @param player
      */
     @Override
